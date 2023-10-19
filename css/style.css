@@ -28,3 +28,6 @@ select {
 .active {
   background-color: aquamarine;
 }
+.bomb {
+  background-color: red;
+}
