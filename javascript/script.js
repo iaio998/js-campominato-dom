@@ -2,7 +2,7 @@ myCampoMinato();
 
 function myCampoMinato() {
   const NUM_BOMBS = 16;
-  const bombs = [];
+
   const btn = document.querySelector("button");
   btn.addEventListener("click", myFunctionPlayground);
 
@@ -12,7 +12,7 @@ function myCampoMinato() {
     const bigBox = document.getElementById("playground");
     bigBox.innerHTML = "";
 
-    let bomb = myBombGenerator(bombs, totSquare);
+    let bomb = myBombGenerator(totSquare);
 
     for (let i = 0; i < totSquare; i++) {
       let boxes = myDrawSquare(i, totSquare, bomb);
@@ -29,8 +29,10 @@ function myCampoMinato() {
     square.style.height = square.style.width;
     square.innerHTML = index + 1;
     square.addEventListener("click", function () {
-      if (bomb.includes(index)) {
+      let newVar = index + 1;
+      if (bomb.includes(newVar)) {
         square.classList.add("bomb");
+        console.log(this.innerHTML);
       } else {
         square.classList.add("active");
         console.log(this.innerHTML);
@@ -40,7 +42,8 @@ function myCampoMinato() {
   }
 
   //CREAZIONE BOMBE
-  function myBombGenerator(bombArray, totSquare) {
+  function myBombGenerator(totSquare) {
+    const bombArray = [];
     while (bombArray.length < NUM_BOMBS) {
       let bomb = getRndInteger(1, totSquare);
       if (!bombArray.includes(bomb)) {
