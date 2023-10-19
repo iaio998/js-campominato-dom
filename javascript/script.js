@@ -2,12 +2,13 @@ myCampoMinato();
 
 function myCampoMinato() {
   const NUM_BOMBS = 16;
-
+  let endGame;
   const btn = document.querySelector("button");
   btn.addEventListener("click", myFunctionPlayground);
 
   //GIOCA CAMPO MINATO
   function myFunctionPlayground() {
+    endGame = false;
     const totSquare = parseInt(document.querySelector("select").value);
     const bigBox = document.getElementById("playground");
     bigBox.innerHTML = "";
@@ -28,14 +29,20 @@ function myCampoMinato() {
     square.style.width = `calc(100% / ${squareWidth})`;
     square.style.height = square.style.width;
     square.innerHTML = index + 1;
-    square.addEventListener("click", function () {
+    square.addEventListener("click", function colorSquare() {
       let newVar = index + 1;
-      if (bomb.includes(newVar)) {
-        square.classList.add("bomb");
-        console.log(this.innerHTML);
+      if (!endGame) {
+        if (bomb.includes(newVar)) {
+          square.classList.add("bomb");
+          endGame = true;
+          console.log(this.innerHTML);
+        } else {
+          square.classList.add("active");
+
+          console.log(this.innerHTML);
+        }
       } else {
-        square.classList.add("active");
-        console.log(this.innerHTML);
+        square.removeEventListener("click", colorSquare);
       }
     });
     return square;
