@@ -1,0 +1,30 @@
+#playground {
+  width: 600px;
+  height: 600px;
+  background-color: black;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+body {
+  background-color: grey;
+  color: white;
+}
+button {
+  margin: 0 auto;
+  display: block;
+}
+select {
+  margin: 0 auto;
+  display: block;
+}
+
+.square {
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active {
+  background-color: aquamarine;
+}
